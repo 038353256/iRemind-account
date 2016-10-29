@@ -2,6 +2,7 @@ var express = require('express');
 var mongodb = require('mongodb');
 var moment = require('moment');
 var app = express();
+var bodyParser = require('body-parser')
 
 
 var uri = 'mongodb://038353256:b05210523@ds023105.mlab.com:23105/db_iremind';
@@ -16,12 +17,15 @@ mongodb.MongoClient.connect(uri, function(err, db) {
 	}
 });
 
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+
 app.post('/api/createFirst', function(request, response) {
-	console.log(request);
-	if (!request.body.value) {
+	console.log(request.body);
+	/*if (!request.body.value) {
 		__sendErrorResponse(response, 403, 'No query parameters value');
 		return;
-	}
+	}*/
 
 
     var account = request.body.account;
@@ -32,7 +36,7 @@ app.post('/api/createFirst', function(request, response) {
 	var timeMillis = moment();
 	var time = timeMillis.format('MM/DD hh:mm:ss');
 	var endString
-	var str = request.body.value;
+	// var str = request.body.value;
 	var AccountArray = new Array();
 	
 	
@@ -57,7 +61,7 @@ app.post('/api/createFirst', function(request, response) {
 					__sendErrorResponse(response, 406, err);
 					} else {
 						response.type('application/json');
-						response.status(200).send("註冊完成!!");
+						response.status(200).send({"description": "註冊完成!!"});
 						response.end();
 					}
 				});
