@@ -17,7 +17,7 @@ mongodb.MongoClient.connect(uri, function(err, db) {
 });
 
 app.post('/api/createFirst', function(request, response) {
-	console.log();
+	console.log(request.body);
 	if (!request.body.value) {
 		__sendErrorResponse(response, 403, 'No query parameters value');
 		return;
