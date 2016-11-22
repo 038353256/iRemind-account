@@ -20,6 +20,10 @@ mongodb.MongoClient.connect(uri, function(err, db) {
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+
+
+//add from Samue1Wang
+
 app.post('/api/createFirst', function(request, response) {
 	console.log(request.body);
 	/*if (!request.body.value) {
@@ -33,23 +37,19 @@ app.post('/api/createFirst', function(request, response) {
 	var name = request.body.name;
 	var tel = request.body.tel;
 	var email = request.body.email;
-	var timeMillis = moment();
-	var time = timeMillis.format('MM/DD hh:mm:ss');
-	var endString
+	//var timeMillis = moment();
+	//var time = timeMillis.format('MM/DD hh:mm:ss');
+	//var endString
 	// var str = request.body.value;
-	var AccountArray = new Array();
-	
-	
+	//var AccountArray = new Array();
 	
 
 	var insert = {
-		_id: timeMillis.unix(),
 		account:account,
 		passwd:passwd,
 		name:name,
 		tel:tel,
-		email:email,
-		time:time
+		email:email
 	};
 
 
@@ -58,15 +58,19 @@ app.post('/api/createFirst', function(request, response) {
 
 	items.insert(insert, function(err, result) {
 					if (err) {
-					__sendErrorResponse(response, 406, err);
-					} else {
 						response.type('application/json');
-						response.status(200).send({"description": "註冊完成!!"});
+						response.status(200).send({"description": "failed"});
+						response.end();
+					}else {
+						response.type('application/json');
+						response.status(200).send({"description": "success"});
 						response.end();
 					}
 				});
 	
 });
+
+//end of Samue1Wang
 
 
 app.get('/api/queryAccountDataPoint', function(request, response) {
