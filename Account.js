@@ -70,6 +70,37 @@ app.post('/api/createFirst', function(request, response) {
 	
 });
 
+app.post('/api/createFirst', function(request, response) {
+	
+	var items = database.collection('dbforaccount');
+	var account = request.body.account;
+	var password = request.body.password;
+
+	items.find({'account' : account},{'_id' : 0}).toArray(function(err,docs){
+		if(err){
+			response.type('application/json');
+			response.status(200).send({"response": "error"});
+			response.end();
+		}else if(docs != false){
+			response.type('application/json');
+			response.status(200).send({"response": "not_find"});
+			response.end();
+		}else{
+			var p = docs[0].passwd;
+			if(p == passwd){
+				response.type('application/json');
+				response.status(200).send({"response": "success"},docs);
+				response.end();
+			}else{
+				response.type('application/json');
+				response.status(200).send({"response": "failed"});
+				response.end();
+			}
+		}
+	});
+
+});
+
 //end of Samue1Wang
 
 
