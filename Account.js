@@ -98,7 +98,7 @@ app.post('/api/checkLoginAccount', function(request, response) {
 							'account' : docs[0].account,
 							'name' : docs[0].name,
 							'number' : docs[0].tel,
-							'email' : doce[0].email
+							'email' : docs[0].email
 						}
 					]
 				);
