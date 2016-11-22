@@ -87,7 +87,7 @@ app.post('/api/checkLoginAccount', function(request, response) {
 			response.end();
 		}else{
 			var p = docs[0].passwd;
-			if(p == passwd){
+			if(p == password){
 				response.type('application/json');
 				response.status(200).send(
 					[
