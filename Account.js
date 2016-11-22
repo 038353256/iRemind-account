@@ -79,21 +79,21 @@ app.post('/api/checkLoginAccount', function(request, response) {
 	items.find({'account' : account},{'_id' : 0}).toArray(function(err,docs){
 		if(err){
 			response.type('application/json');
-			response.status(200).send({"response": "error"});
+			response.status(200).send([{"response": "error"}]);
 			response.end();
 		}else if(docs == false){
 			response.type('application/json');
-			response.status(200).send({"response": "not_find"});
+			response.status(200).send([{"response": "not_find"}]);
 			response.end();
 		}else{
 			var p = docs[0].passwd;
 			if(p == passwd){
 				response.type('application/json');
-				response.status(200).send({"response": "success"}+docs);
+				response.status(200).send([{"response": "success",docs}]);
 				response.end();
 			}else{
 				response.type('application/json');
-				response.status(200).send({"response": "failed"});
+				response.status(200).send([{"response": "failed"}]);
 				response.end();
 			}
 		}
