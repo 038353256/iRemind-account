@@ -81,7 +81,7 @@ app.post('/api/checkLoginAccount', function(request, response) {
 			response.type('application/json');
 			response.status(200).send({"response": "error"});
 			response.end();
-		}else if(docs != false){
+		}else if(docs == false){
 			response.type('application/json');
 			response.status(200).send({"response": "not_find"});
 			response.end();
