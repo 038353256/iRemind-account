@@ -70,7 +70,7 @@ app.post('/api/createFirst', function(request, response) {
 	
 });
 
-app.post('/api/createFirst', function(request, response) {
+app.post('/api/checkLoginAccount', function(request, response) {
 	
 	var items = database.collection('dbforaccount');
 	var account = request.body.account;
