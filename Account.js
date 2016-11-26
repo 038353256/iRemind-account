@@ -127,15 +127,9 @@ app.post('/api/saveMyFavoriteRoute', function(request, response) {
 			name_ary : request.body.busname,
 			num_ary : request.body.busnum,
 			arrival_stop : request.body.a_stop,
-			arrival_stop_location : {
-				lat : request.body.a_lat,
-				lng : request.body.a_lng
-			},
+			arrival_stop_location : request.body.a_latlng,
 			departure_stop : request.body.d_stop,
-			departure_stop_location : {
-				lat : request.body.d_lat,
-				lng : request.body.d_lng
-			}
+			departure_stop_location : request.body.d_latlng
 		},
 		instructions : request.body.instructions,
 		polyline : request.body.polyline,
