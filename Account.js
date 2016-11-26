@@ -170,7 +170,7 @@ app.post('/api/saveMyFavoriteRoute', function(request, response) {
 		'mode_ary' : modeAry,
 		'bus_inf' : {
 			'name_ary' : nameAry,
-			'num_ary' : num_ary,
+			'num_ary' : numAry,
 			'arrival_stop' : a_stopAry,
 			'arrival_stop_location' : {
 				'lat' : a_latAry,
