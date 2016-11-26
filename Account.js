@@ -204,12 +204,12 @@ app.get('/api/getMyFavoriteRoute', function(request, response) {
 	items.find({'account' : account},{'_id' : 0}).toArray(function(err,docs){
 		if(err){
 			response.type('application/json');
-			response.status(200).send({'response' : 'err'});
+			response.status(200).send([{'response' : 'err'}]);
 			response.end;
 		}else{
 			if(docs == false){
 				response.type('application/json');
-				response.status(200).send({'response' : 'not_find'});
+				response.status(200).send({['response' : 'not_find'}]);
 				response.end;
 			}else{
 				response.type('application/json');
