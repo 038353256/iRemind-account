@@ -140,27 +140,33 @@ app.post('/api/saveMyFavoriteRoute', function(request, response) {
 	};
 
 
-	items.find({'account' : account},{'title' : title}).toArray(function(err,docs){
+	items.find({'account' : account}).toArray(function(err,docs){
 		if(err){
 			response.type('application/json');
 			response.status(200).send({'response' : 'failed'});
 			response.end;
 		}else{
 			if(docs == false){
-				items.insert(insert, function(err, result){
-					if(err){
-						response.type('application/json');
-						response.status(200).send({'response' : 'failed'});
-						response.end;
-					}else{
-						response.type('application/json');
-						response.status(200).send({'response' : 'success'});
-						response.end;
-					}
-				});
+				if(docs[0].title == title){
+					response.type('application/json');
+					response.status(200).send({'response' : 'used'});
+					response.end;
+				}else{
+					items.insert(insert, function(err, result){
+						if(err){
+							response.type('application/json');
+							response.status(200).send({'response' : 'failed'});
+							response.end;
+						}else{
+							response.type('application/json');
+							response.status(200).send({'response' : 'success'});
+							response.end;
+						}
+					});
+				}
 			}else{
 				response.type('application/json');
-				response.status(200).send({'response' : 'used'});
+				response.status(200).send({'response' : 'not_find'});
 				response.end;
 			}
 		}
