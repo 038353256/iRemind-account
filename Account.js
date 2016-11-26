@@ -209,7 +209,7 @@ app.get('/api/getMyFavoriteRoute', function(request, response) {
 		}else{
 			if(docs == false){
 				response.type('application/json');
-				response.status(200).send({['response' : 'not_find'}]);
+				response.status(200).send([{'response' : 'not_find'}]);
 				response.end;
 			}else{
 				response.type('application/json');
