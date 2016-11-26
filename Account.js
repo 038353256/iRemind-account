@@ -118,6 +118,31 @@ app.post('/api/saveMyFavoriteRoute', function(request, response) {
 	var items = database.collection('myFavoriteRoutes');
 	var title = request.body.title;
 	var account = request.body.account;
+	var modeAry = new Array();
+	modeAry = request.body.mode.split(",");
+	var nameAry = new Array();
+	nameAry = request.body.busname
+	var numAry = new Array();
+	numAry = request.body.mode.split(",");
+	var a_stop = new Array();
+	a_stop = request.body.a_stop.split(",");
+	var a_latAry = new Array();
+	a_latAry = request.body.a_lat.split(",");
+	var a_lngAry = new Array();
+	a_lngAry = request.body.a_lng.split(",");
+	var d_stopAry = new Array();
+	d_stopAry = request.body.d_stop.split(",");
+	var d_latAry = new Array();
+	d_latAry = request.body.d_lat.split(",");
+	var d_lngAry = new Array();
+	d_lngAry = request.body.d_lng.split(",");
+	var instructionsAry = new Array();
+	instructionsAry = request.instructions.mode.split(",");
+
+	console.log(nameAry);
+	console.log(a_lat);
+	console.log(instructionsAry);
+
 
 	var insert = {
 		account : request.body.account,
