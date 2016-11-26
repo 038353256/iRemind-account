@@ -146,7 +146,7 @@ app.post('/api/saveMyFavoriteRoute', function(request, response) {
 			response.status(200).send({'response' : 'failed'});
 			response.end;
 		}else{
-			if(docs == false){
+			if(docs != false){
 				var res = new Array();
 				res = docs[0];
 				var used = false;
@@ -175,9 +175,17 @@ app.post('/api/saveMyFavoriteRoute', function(request, response) {
 					});
 				}
 			}else{
-				response.type('application/json');
-				response.status(200).send({'response' : 'not_find'});
-				response.end;
+				items.insert(insert, function(err, result){
+						if(err){
+							response.type('application/json');
+							response.status(200).send({'response' : 'failed'});
+							response.end;
+						}else{
+							response.type('application/json');
+							response.status(200).send({'response' : 'success'});
+							response.end;
+						}
+					});
 			}
 		}
 	});
