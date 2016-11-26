@@ -156,7 +156,7 @@ app.post('/api/saveMyFavoriteRoute', function(request, response) {
 	d_lngAry = d_lng.split(',');
 
 	var instructionsAry = new Array();
-	var instructions = request.instructions.instructions;
+	var instructions = request.body.instructions;
 	instructionsAry = instructions.split(',');
 
 	console.log(nameAry);
