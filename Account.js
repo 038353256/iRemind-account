@@ -147,7 +147,16 @@ app.post('/api/saveMyFavoriteRoute', function(request, response) {
 			response.end;
 		}else{
 			if(docs == false){
-				if(docs[0].title == request.body.title){
+				var res = docs[0];
+				var used = false;
+				for(var i =0; i<res.length; i++){
+					var t = res[i].title;
+					if( t == request.body.title){
+						used = true;
+						break;
+					}
+				}
+				if(used){
 					response.type('application/json');
 					response.status(200).send({'response' : 'used'});
 					response.end;
