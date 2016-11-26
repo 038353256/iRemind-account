@@ -121,7 +121,7 @@ app.post('/api/saveMyFavoriteRoute', function(request, response) {
 
 	var insert = {
 		account : request.body.account,
-		title : request.body.password,
+		title : request.body.title,
 		mode_ary : request.body.mode,
 		bus_inf : {
 			name_ary : request.body.busname,
@@ -147,7 +147,7 @@ app.post('/api/saveMyFavoriteRoute', function(request, response) {
 			response.end;
 		}else{
 			if(docs == false){
-				if(docs[0].title == title){
+				if(docs[0].title == request.body.title){
 					response.type('application/json');
 					response.status(200).send({'response' : 'used'});
 					response.end;
