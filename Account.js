@@ -165,29 +165,29 @@ app.post('/api/saveMyFavoriteRoute', function(request, response) {
 
 
 	var insert = {
-		account : request.body.account,
-		title : request.body.title,
-		mode_ary : request.body.mode,
-		bus_inf : {
-			name_ary : request.body.busname,
-			num_ary : request.body.busnum,
-			arrival_stop : request.body.a_stop,
-			arrival_stop_location : {
-				lat : request.body.a_lat,
-				lng : request.body.a_lng
+		'account' : request.body.account,
+		'title' : request.body.title,
+		'mode_ary' : modeAry,
+		'bus_inf' : {
+			'name_ary' : nameAry,
+			'num_ary' : num_ary,
+			'arrival_stop' : a_stopAry,
+			'arrival_stop_location' : {
+				'lat' : a_latAry,
+				'lng' : a_lngAry
 			},
-			departure_stop : request.body.d_stop,
-			departure_stop_location : {
-				lat : request.body.d_lat,
-				lng : request.body.d_lng
+			'departure_stop' : d_stopAry,
+			'departure_stop_location' : {
+				'lat' : d_latAry,
+				'lng' : d_lngAry
 			}
 		},
-		instructions : request.body.instructions,
-		polyline : request.body.polyline,
-		departure_time : request.body.d_time,
-		arrival_time : request.body.a_time,
-		distance : request.body.distance,
-		duration : request.body.duration
+		'instructions' : instructionsAry,
+		'polyline' : request.body.polyline,
+		'departure_time' : request.body.d_time,
+		'arrival_time' : request.body.a_time,
+		'distance' : request.body.distance,
+		'duration' : request.body.duration
 	};
 
 
