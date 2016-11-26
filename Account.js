@@ -118,26 +118,46 @@ app.post('/api/saveMyFavoriteRoute', function(request, response) {
 	var items = database.collection('myFavoriteRoutes');
 	var title = request.body.title;
 	var account = request.body.account;
+
 	var modeAry = new Array();
-	modeAry = request.body.mode.split(",");
+	var mode = request.body.mode;
+	modeAry = mode.split(',');
+
 	var nameAry = new Array();
-	nameAry = request.body.busname
+	var name = request.body.busname;
+	nameAry = name.split(',');
+
 	var numAry = new Array();
-	numAry = request.body.mode.split(",");
-	var a_stop = new Array();
-	a_stop = request.body.a_stop.split(",");
+	var num = request.body.busnum;
+	numAry = num.split(',');
+
+	var a_stopAry = new Array();
+	var a_stop = request.body.a_stop
+	a_stopAry = a_stop.split(',');
+
 	var a_latAry = new Array();
-	a_latAry = request.body.a_lat.split(",");
+	var a_lat = request.body.a_lat;
+	a_latAry = a_lat.split(',');
+
 	var a_lngAry = new Array();
-	a_lngAry = request.body.a_lng.split(",");
+	var a_lng = request.body.a_lng;
+	a_lngAry = a_lng.split(',');
+
 	var d_stopAry = new Array();
-	d_stopAry = request.body.d_stop.split(",");
+	var d_stop = request.body.d_stop;
+	d_stopAry = d_stop.split(',');
+
 	var d_latAry = new Array();
-	d_latAry = request.body.d_lat.split(",");
+	var d_lat = request.body.d_lat;
+	d_latAry = d_lat.split(',');
+
 	var d_lngAry = new Array();
-	d_lngAry = request.body.d_lng.split(",");
+	var d_lng = request.body.d_lng;
+	d_lngAry = d_lng.split(',');
+
 	var instructionsAry = new Array();
-	instructionsAry = request.instructions.mode.split(",");
+	var instructions = request.instructions.instructions;
+	instructionsAry = instructions.split(',');
 
 	console.log(nameAry);
 	console.log(a_lat);
