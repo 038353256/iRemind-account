@@ -113,6 +113,89 @@ app.post('/api/checkLoginAccount', function(request, response) {
 
 });
 
+
+app.post('/api/saveMyFavoriteRoute', function(request, response) {
+	var items = database.collection('myFavoriteRoutes');
+	var title = request.body.title;
+	var account = request.body.account;
+
+	var insert = {
+		account : request.body.account,
+		title : request.body.password,
+		mode_ary : request.body.mode,
+		bus_inf : {
+			name_ary : request.body.busname,
+			num_ary : request.body.busnum,
+			arrival_stop : request.body.a_stop,
+			arrival_stop_location : {
+				lat : request.body.a_lat,
+				lng : request.body.a_lng
+			},
+			departure_stop : request.body.d_stop,
+			departure_stop_location : {
+				lat : request.body.d_lat,
+				lng : request.body.d_lng
+			}
+		},
+		instructions : request.body.instructions,
+		polyline : request.body.polyline,
+		departure_time : request.body.d_time,
+		arrival_time : request.body.a_time,
+		distance : request.body.distance,
+		duration : request.body.duration
+	};
+
+
+	items.find({'account' : account},{'title' : title}).toArray(function(err,docs){
+		if(err){
+			response.type('application/json');
+			response.status(200).send({'response' : 'failed'});
+			response.end;
+		}else{
+			if(docs == false){
+				items.insert(insert, function(err, result){
+					if(err){
+						response.type('application/json');
+						response.status(200).send({'response' : 'failed'});
+						response.end;
+					}else{
+						response.type('application/json');
+						response.status(200).send({'response' : 'success'});
+						response.end;
+					}
+				});
+			}else{
+				response.type('application/json');
+				response.status(200).send({'response' : 'used'});
+				response.end;
+			}
+		}
+	});
+});
+
+app.get('/api/getMyFavoriteRoute', function(request, response) {
+	var items = database.collection('myFavoriteRoutes');
+	var account = request.query.account;
+
+	items.find({'account' : account},{'_id' : 0}).toArray(function(err,docs){
+		if(err){
+			response.type('application/json');
+			response.status(200).send({'response' : 'err'});
+			response.end;
+		}else{
+			if(docs == false){
+				response.type('application/json');
+				response.status(200).send({'response' : 'not_find'});
+				response.end;
+			}else{
+				response.type('application/json');
+				response.status(200).send(docs);
+				response.end;
+			}
+		}
+	});
+});
+
 //end of Samue1Wang
 
 
