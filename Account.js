@@ -150,7 +150,7 @@ app.post('/api/saveMyFavoriteRoute', function(request, response) {
 				var res = new Array();
 				res = docs[0];
 				var used = false;
-				for(var i =0; i<res.length; i++){
+				for(var i =0; i < res.length; i++){
 					var t = res[i].title;
 					if( t == request.body.title){
 						used = true;
