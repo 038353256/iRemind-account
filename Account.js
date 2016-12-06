@@ -22,7 +22,7 @@ app.use(bodyParser.json())
 
 
 
-//add from Samue1Wang
+//start
 
 app.post('/api/createFirst', function(request, response) {
 	console.log(request.body);
@@ -265,7 +265,7 @@ app.get('/api/getMyFavoriteRoute', function(request, response) {
 	});
 });
 
-//end of Samue1Wang
+//end
 
 
 app.get('/api/queryAccountDataPoint', function(request, response) {
